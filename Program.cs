@@ -46,16 +46,10 @@ namespace Blog
                 .OrderBy(x => x.LastUpdateDate)
                 .ToList();
             
-            foreach (var post in posts) 
+            foreach (var item in posts) 
                 Console.WriteLine($"{post.Title} por {post.Author.Name} em {post.Category.Name}");
             
-            var post = context
-                .Posts
-                // .AsNoTracking() PRECISA DO TRACKING 
-                .Include(x => x.Author)
-                .Include(x => x.Category)
-                .OrderBy(x => x.LastUpdateDate)
-                .FirstOrDefault(); // Pegando o primeiro item
+           
             
             post.Author.Name = "Uncle Bob";
             
